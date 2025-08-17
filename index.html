@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>启学象限 | 国际学校合作伙伴计划</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Raleway:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2ecc71;
+            --accent: #1abc9c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --success: #27ae60;
+            --light-bg: #f0f9ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 修改1: 头部区域调整以容纳更大的logo */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 20px 0; /* 增加头部内边距 */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 15px 0; /* 滚动后保留更多空间 */
+            background: rgba(52, 152, 219, 0.95);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* 增加logo与文本间距 */
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 2.1rem; /* 增大文本大小 */
+        }
+        
+        /* 修改2: logo高度增加一倍 */
+        .logo img {
+            height: 100px; /* 原为50px，现增加为100px */
+            transition: all 0.3s ease; /* 添加过渡效果 */
+        }
+        
+        /* 滚动时logo适当缩小 */
+        header.scrolled .logo img {
+            height: 80px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        nav a:hover {
+            color: white;
+        }
+        
+        .nav-btn {
+            background: white;
+            color: var(--primary);
+            padding: 12px 30px; /* 增大按钮尺寸 */
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.15rem; /* 增大按钮文字 */
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        
+        /* Hero Section */
+        /* 修改3: 调整hero顶部内边距以容纳更大的header */
+        .hero {
+            background: linear-gradient(120deg, #e0f7fa 0%, #d1f2eb 100%);
+            padding: 210px 0 100px; /* 顶部内边距从180px增加到210px */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            top: -300px;
+            right: -200px;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            margin-left: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary:hover {
+            background: #f1f5f9;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Partners Section */
+        .partners {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .partner-logo {
+            height: 60px;
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.2rem;
+            min-width: 180px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0) opacity(1);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .benefit-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-color: var(--accent);
+        }
+        
+        .benefit-card:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .benefit-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Partnership Models */
+        .models {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #e0f7fa 0%, #d1f2eb 100%);
+        }
+        
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .model-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .model-card.platinum::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db 0%, #2ecc71 100%);
+        }
+        
+        .model-card.gold::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db 0%, #1abc9c 100%);
+        }
+        
+        .model-card.silver::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #aed6f1 0%, #d1f2eb 100%);
+        }
+        
+        .model-header {
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .model-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .model-features {
+            padding: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        .feature:last-child {
+            border-bottom: none;
+        }
+        
+        .feature i {
+            color: var(--success);
+            margin-right: 10px;
+            font-size: 1.2rem;
+            min-width: 24px;
+        }
+        
+        .model-footer {
+            padding: 20px;
+            background: var(--light);
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        /* Tools Section */
+        .tools {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .tool-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+        
+        .tool-card:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .tool-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover .tool-icon {
+            transform: scale(1.1);
+        }
+        
+        .tool-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Success Stories */
+        .stories {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #d1f2eb 0%, #aed6f1 100%);
+        }
+        
+        .stories-container {
+            max-width: 900px;
+            margin: 50px auto 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        
+        .story-header {
+            padding: 30px;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .story-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .story-content {
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+        }
+        
+        .story-metrics {
+            flex: 1;
+        }
+        
+        .metric {
+            margin-bottom: 25px;
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .story-text {
+            flex: 2;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.8;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .quote:before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -15px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .quote-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quote-author:before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
+            margin-right: 10px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta:before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            top: -100px;
+            right: -100px;
+        }
+        
+        .cta:after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .cta p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .cta .btn {
+            background: white;
+            color: var(--primary);
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .cta .btn:hover {
+            background: #f1f5f9;
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #cbd5e1;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h4 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            color: var(--primary);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            /* 修改4: 中等屏幕尺寸调整 */
+            .logo img {
+                height: 85px;
+            }
+            
+            header.scrolled .logo img {
+                height: 70px;
+            }
+            
+            nav ul {
+                gap: 20px;
+            }
+            
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 修改5: 移动端适配 */
+            .hero {
+                padding: 180px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                display: block;
+                margin-bottom: 15px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+            
+            .story-content {
+                flex-direction: column;
+            }
+            
+            /* 移动端logo调整 */
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .logo img {
+                height: 70px;
+            }
+            
+            header.scrolled .logo img {
+                height: 60px;
+            }
+            
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* 修改6: 小屏幕调整 */
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo img {
+                height: 60px;
+            }
+            
+            header.scrolled .logo img {
+                height: 50px;
+            }
+            
+            nav ul {
+                gap: 8px;
+            }
+            
+            nav a {
+                font-size: 0.95rem;
+            }
+            
+            .hero {
+                padding: 160px 0 60px;
+            }
+        }
+
+        /* 表单模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            color: #777;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .modal-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .modal-header p {
+            color: var(--gray);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .form-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .form-submit .btn {
+            padding: 16px 45px;
+            font-size: 1.1rem;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .form-error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* 提交成功消息 */
+        .success-message {
+            text-align: center;
+            padding: 50px 20px;
+            display: none;
+        }
+        
+        .success-message i {
+            font-size: 5rem;
+            color: var(--success);
+            margin-bottom: 25px;
+        }
+        
+        .success-message h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .success-message p {
+            color: var(--gray);
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/P5qrM6XG/logo.png" alt="启学象限">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#benefits">核心优势</a></li>
+                    <li><a href="#models">合作模式</a></li>
+                    <li><a href="#tools">支持工具</a></li>
+                    <li><a href="#stories">成功案例</a></li>
+                    <li><a href="#cta" class="nav-btn">立即加入</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>携手启学象限，共创国际教育未来</h1>
+                <p>加入我们的精英合作伙伴网络，共同推动智慧教育解决方案在全球顶尖国际学校的应用</p>
+                <div class="hero-btns">
+                    <a href="#models" class="btn">探索合作模式</a>
+                    <a href="#cta" class="btn btn-secondary">立即申请</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-title">
+                <h2>已合作的顶尖国际学校</h2>
+                <p>我们的解决方案已被全球领先的教育机构采用</p>
+            </div>
+            <div class="partner-logos">
+                <div class="partner-logo">上海世外国际学校</div>
+				<div class="partner-logo">上海世外国际学校</div>
+                <div class="partner-logo">上海世外国际学校</div>
+				<div class="partner-logo">宁波外国语国际学校</div>
+				<div class="partner-logo">宁波外国语国际学校</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>合作伙伴核心优势</h2>
+                <p>加入启学象限合作伙伴计划，获得全方位的资源支持</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3>全球课程资源</h3>
+                    <p>提供完整的IB/AP/A-Level课程体系，满足国际学校教学需求</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>丰厚回报计划</h3>
+                    <p>行业领先的激励机制，根据业绩提供阶梯式收益方案</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>决策链网络</h3>
+                    <p>接入全球顶尖国际学校校长关系网络，突破决策壁垒</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>专业培训体系</h3>
+                    <p>提供IBO认证培训课程，提升教师产品使用效率</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>区域保护政策</h3>
+                    <p>严格的区域保护机制，保障合作伙伴的市场权益</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>全面营销支持</h3>
+                    <p>提供定制化营销材料和市场活动支持</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Models -->
+    <section class="models" id="models">
+        <div class="container">
+            <div class="section-title">
+                <h2>合作伙伴模式</h2>
+                <p>根据您的资源和专长，选择最适合的合作方式</p>
+            </div>
+            <div class="models-grid">
+                <!-- 战略合作伙伴 -->
+                <div class="model-card platinum">
+                    <div class="model-header">
+                        <h3>战略合作伙伴</h3>
+                        <p>面向教育集团和区域领导者</p>
+                    </div>
+                    <div class="model-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>区域独家授权和优先支持</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>高级别决策链网络接入</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>定制化市场推广方案</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>最高级别的业绩激励机制</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>年度全球峰会参与资格</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <p>适合年合作规模300万+的合作伙伴</p>
+                    </div>
+                </div>
+                
+                <!-- 认证合作伙伴 -->
+                <div class="model-card gold">
+                    <div class="model-header">
+                        <h3>认证合作伙伴</h3>
+                        <p>面向专业教育顾问和机构</p>
+                    </div>
+                    <div class="model-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>优先商机分配支持</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>专属客户经理全程支持</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>全面的销售工具包</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>具有竞争力的收益方案</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>季度培训与发展计划</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <p>适合年合作规模100-300万的合作伙伴</p>
+                    </div>
+                </div>
+                
+                <!-- 教育大使 -->
+                <div class="model-card silver">
+                    <div class="model-header">
+                        <h3>教育大使</h3>
+                        <p>面向个人教育专家</p>
+                    </div>
+                    <div class="model-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>灵活的合作方式</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>按业绩计算的回报方案</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>专业培训与认证</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>营销材料支持</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>季度业绩奖励计划</span>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <p>适合个人专家和自由顾问</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools" id="tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>专属支持工具</h2>
+                <p>为合作伙伴提供的全方位转化支持系统</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>决策链穿透系统</h3>
+                    <p>可视化国际学校决策层级，精准定位关键决策人</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>智能提案生成器</h3>
+                    <p>自动生成定制化学校提案，包含ROI分析和实施计划</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>成效预测模型</h3>
+                    <p>基于学校数据预测学习机使用后的学业提升效果</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>异议处理手册</h3>
+                    <p>针对国际学校常见疑问的标准应答方案</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>教师培训套件</h3>
+                    <p>全套教师培训材料，帮助学校快速上手</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>演示视频库</h3>
+                    <p>专业制作的产品演示视频，针对不同学科定制</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="stories" id="stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>成功案例</h2>
+                <p>我们的合作伙伴如何帮助国际学校实现数字化转型</p>
+            </div>
+            
+            <div class="stories-container">
+                <div class="story-header">
+                    <h3>上海国际学校案例</h3>
+                    <p>合作伙伴：李明 | 教育顾问 | 合作时间9个月</p>
+                </div>
+                <div class="story-content">
+                    <div class="story-metrics">
+                        <div class="metric">
+                            <div class="metric-value">87台</div>
+                            <div class="metric-label">设备部署</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">41%</div>
+                            <div class="metric-label">数学成绩提升</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">92%</div>
+                            <div class="metric-label">教师满意度</div>
+                        </div>
+                    </div>
+                    <div class="story-text">
+                        <p class="quote">"通过启学象限的决策链穿透系统，我精准定位了上海国际学校的数学学科主任。利用提供的ROI分析工具，展示了如何通过个性化学习路径提升学生成绩。整个合作过程中，启学象限团队提供了全方位的支持。"</p>
+                        <p class="quote-author">李明，教育顾问</p>
+                        <p><strong>关键策略：</strong> 利用学科诊断报告展示价值 + 提供教师培训计划消除使用障碍 + 家委会参与机制</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>加入启学象限合作伙伴计划</h2>
+                <p>现在申请，即可获得价值¥20,000的"国际学校突破套装"（限前20名合作伙伴）</p>
+                <a href="#" class="btn" id="openForm">立即申请成为合作伙伴</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>启学象限</h4>
+                    <p>赋能全球教育，创新学习体验</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>合作伙伴资源</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> 合作伙伴手册</a></li>
+                        <li><a href="#"><i class="fas fa-video"></i> 培训视频库</a></li>
+                        <li><a href="#"><i class="fas fa-tools"></i> 销售工具包</a></li>
+                        <li><a href="#"><i class="fas fa-chart-bar"></i> 业绩仪表盘</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>产品解决方案</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-laptop"></i> 智慧学习机</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> 国际课程体系</a></li>
+                        <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> 教师管理平台</a></li>
+                        <li><a href="#"><i class="fas fa-chart-line"></i> 学情分析系统</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>上海市漕河泾商务中心A座</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>400-888-8888</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>partners@quadraspark.com</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-globe"></i>
+                        <span>www.quadraspark.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 启学象限 国际学校合作伙伴计划. 保留所有权利. | 沪ICP备202405678号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 合作伙伴申请表单模态框 -->
+    <div id="partnerFormModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            
+            <div id="formContent">
+                <div class="modal-header">
+                    <h2>国际学校合作伙伴申请表</h2>
+                    <p>填写以下信息，我们的团队将在24小时内与您联系</p>
+                </div>
+                
+                <form id="partnerApplicationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">姓名 <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" required>
+                            <div class="form-error" id="nameError">请输入您的姓名</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">职位 <span class="required">*</span></label>
+                            <input type="text" id="position" name="position" required>
+                            <div class="form-error" id="positionError">请输入您的职位</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">电子邮箱 <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="form-error" id="emailError">请输入有效的电子邮箱</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">联系电话 <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <div class="form-error" id="phoneError">请输入有效的联系电话</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="organization">学校/机构名称 <span class="required">*</span></label>
+                            <input type="text" id="organization" name="organization" required>
+                            <div class="form-error" id="orgError">请输入学校或机构名称</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="partnershipType">感兴趣的合作模式 <span class="required">*</span></label>
+                            <select id="partnershipType" name="partnershipType" required>
+                                <option value="">请选择合作模式</option>
+                                <option value="strategic">战略合作伙伴</option>
+                                <option value="certified">认证合作伙伴</option>
+                                <option value="ambassador">教育大使</option>
+                                <option value="unsure">尚未决定</option>
+                            </select>
+                            <div class="form-error" id="typeError">请选择合作模式</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">教育行业经验 <span class="required">*</span></label>
+                        <select id="experience" name="experience" required>
+                            <option value="">请选择您的经验</option>
+                            <option value="1-3">1-3年</option>
+                            <option value="4-6">4-6年</option>
+                            <option value="7-10">7-10年</option>
+                            <option value="10+">10年以上</option>
+                        </select>
+                        <div class="form-error" id="expError">请选择您的行业经验</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">您希望如何合作？</label>
+                        <textarea id="message" name="message" rows="4" placeholder="请简要描述您的合作意向和资源..."></textarea>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn">提交申请</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="successMessage" class="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>申请已提交成功！</h3>
+                <p>感谢您申请启学象限合作伙伴计划。我们的团队将在24小时内与您联系。</p>
+                <button class="btn" id="closeSuccess">关闭窗口</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 粘性头部效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.model-card, .benefit-card, .tool-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // 表单模态框功能
+        const modal = document.getElementById('partnerFormModal');
+        const openFormBtn = document.getElementById('openForm');
+        const closeModal = document.querySelector('.close-modal');
+        const closeSuccess = document.getElementById('closeSuccess');
+        const form = document.getElementById('partnerApplicationForm');
+        const formContent = document.getElementById('formContent');
+        const successMessage = document.getElementById('successMessage');
+        
+        // 打开表单模态框
+        openFormBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        });
+        
+        // 关闭模态框
+        function closeFormModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // 恢复滚动
+        }
+        
+        closeModal.addEventListener('click', closeFormModal);
+        closeSuccess.addEventListener('click', closeFormModal);
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeFormModal();
+            }
+        });
+        
+        // 表单验证和提交
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 重置错误信息
+            document.querySelectorAll('.form-error').forEach(error => {
+                error.style.display = 'none';
+            });
+            
+            let isValid = true;
+            
+            // 验证姓名
+            if (!form.fullName.value.trim()) {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // 验证职位
+            if (!form.position.value.trim()) {
+                document.getElementById('positionError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // 验证邮箱
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(form.email.value)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // 验证电话
+            const phoneRegex = /^[0-9+\-\s()]{7,20}$/;
+            if (!phoneRegex.test(form.phone.value)) {
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // 验证机构
+            if (!form.organization.value.trim()) {
+                document.getElementById('orgError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // 验证合作模式
+            if (!form.partnershipType.value) {
+                document.getElementById('typeError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // 验证经验
+            if (!form.experience.value) {
+                document.getElementById('expError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // 在实际应用中，这里应该发送数据到服务器
+                // 模拟后台数据收集
+                const formData = {
+                    name: form.fullName.value,
+                    position: form.position.value,
+                    email: form.email.value,
+                    phone: form.phone.value,
+                    organization: form.organization.value,
+                    partnershipType: form.partnershipType.value,
+                    experience: form.experience.value,
+                    message: form.message.value,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // 模拟发送数据到后台
+                console.log('表单数据已提交:', formData);
+                
+                // 显示成功消息
+                formContent.style.display = 'none';
+                successMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
